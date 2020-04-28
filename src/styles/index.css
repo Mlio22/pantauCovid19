@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {}
+
+header-bar {
+    background-color: #302b2b;
+    text-align: center;
+    padding: 15px;
+    display: block;
+}
+
+header-bar>h1 {
+    font-family: 'Open Sans', sans-serif;
+    color: #CF1F2B;
+}

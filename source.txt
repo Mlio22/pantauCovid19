@@ -1,0 +1,23 @@
+##  IMAGE   ##
+
+tengkorak   : https://toppng.com/uploads/preview/skull-png-images-free-download-svg-free-library-my-broom-broke-so-now-im-11563117179xaocxpzanf.png
+note        : https://toppng.com/uploads/preview/note-pencile-memo-pen-notebook-book-write-svg-icon-note-pen-icon-11553449060lx2hxjniab.png
+rumah sakit : https://img2.pngio.com/icon-hospital-medicine-png-512x512px-hospital-black-and-white-hospital-icon-png-800_800.jpg
+
+##  WARNA   ##
+
+Biru    : #41E1F2
+Merah   : #CF1F2B
+Hitam   : #383535
+Putih   : #F5F2F3
+
+##  DEPENDENCIES    ##
+
+Chart.js
+Select2
+
+##  OTHER   ##
+
+Toggle Switch (W3school)    : https://www.w3schools.com/howto/howto_css_switch.asp
+Bottom Modal (Mobile)       : https://www.w3schools.com/howto/howto_css_modals.asp
+Popup Modal (W3school)      : https://sabe.io/tutorials/how-to-create-modal-popup-box#html-markup
