@@ -1,0 +1,27 @@
+{
+  "name": "pantaucovid19",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mlio22/pantauCovid19.git"
+  },
+  "keywords": [
+    "covid19"
+  ],
+  "author": "Muhammat Lio Pratama",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Mlio22/pantauCovid19/issues"
+  },
+  "homepage": "https://github.com/Mlio22/pantauCovid19#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "chart.js": "^2.9.3",
+    "select2": "^4.0.13"
+  }
+}
