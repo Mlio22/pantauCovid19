@@ -1,0 +1,37 @@
+search-bar {
+    text-align: center;
+}
+
+.locationHeader {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.locationHeader.light {
+    color: #2B0D0D;
+}
+
+.locationHeader.dark {
+    color: #efeeee;
+}
+
+search-bar>.searchElement {
+    font-size: 12px;
+    font-weight: bold;
+    width: max-content;
+    padding: 10px 30px;
+    margin: 8px auto 0 auto;
+    border-radius: 30px;
+}
+
+.searchElement.light {
+    background-color: #efeeee;
+    box-shadow: 6px 6px 16px rgba(18, 18, 18, .25);
+    border: 1px #707070 solid;
+    color: #2B0D0D;
+}
+
+.searchElement.dark {
+    color: #efeeee;
+    background-color: #696969;
+}

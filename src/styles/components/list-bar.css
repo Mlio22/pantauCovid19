@@ -1,0 +1,72 @@
+list-bar {
+    margin-bottom: 20px;
+}
+
+list-bar>div {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+list-bar>div>* {
+    transition: .4s all;
+}
+
+.text {
+    font-size: 13px;
+    margin: 7px 0;
+    font-weight: bold;
+}
+
+.data {
+    font-size: 16px;
+    font-weight: bold;
+    height: 20px;
+    padding: 7px 50px;
+    border-radius: 30px;
+    margin: 0 30px;
+    box-shadow: 6px 6px 16px rgba(18, 18, 18, .25);
+}
+
+.light>.data {
+    color: #292929;
+}
+
+.dark>.data {
+    color: #2B0D0D;
+}
+
+.light>.text.kasus {
+    color: #EE575E;
+}
+
+.light>.text.sembuh {
+    color: #627DBC;
+}
+
+.light>.text.meninggal {
+    color: #7A7A7A;
+}
+
+.dark>.text.kasus {
+    color: #F77D82;
+}
+
+.dark>.text.sembuh {
+    color: #627BB7;
+}
+
+.dark>.text.meninggal {
+    color: #B6B5B5;
+}
+
+.data.kasus {
+    background-color: #EE575E;
+}
+
+.data.sembuh {
+    background-color: #627DBC;
+}
+
+.data.meninggal {
+    background-color: #7A7A7A;
+}

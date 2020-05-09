@@ -39,7 +39,7 @@ window.addEventListener("resize", function() {
     }
 });
 
-document.querySelector("header-bar").addEventListener("click", function() {
+document.querySelector(".headerTextContainer").addEventListener("click", function() {
     var elem = document.documentElement;
 
     if (elem.requestFullscreen) {

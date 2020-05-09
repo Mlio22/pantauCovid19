@@ -1,10 +1,16 @@
 ##  TODO    ##
 
-+   tambah fitur deteksi koneksi 
-*   tambah fitur mengambil ulang data jika gagal / refresh data
-*   tambah fitur program hanya bekerja jika landscape
-*   terapkan flexbox pada program agar responsive  
-*   tambah loaders untuk menunggu data difetch
++   kerjakan semua sub bagian website (potrait)
+*   kerjakan semua sub bagian website (potrait dark)
+*   kerjakan semua sub bagian website (landscape)
+*   kerjakan semua sub bagian website (landscape dark)
+
+
+# +   tambah fitur deteksi koneksi 
+# *   tambah fitur mengambil ulang data jika gagal / refresh data
+# *   tambah fitur program hanya bekerja jika landscape
+# *   terapkan flexbox pada program agar responsive  
+# *   tambah loaders untuk menunggu data difetch
  
 
 

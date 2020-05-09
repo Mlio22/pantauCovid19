@@ -1,4 +1,4 @@
-import "../../../node_modules/chart.js/dist/Chart.js";
+import "../../../node_modules/chart.js/dist/Chart.min.js";
 
 const baseUrlInt = "https://api.covid19api.com/summary";
 const baseUrlDom = "https://api.kawalcorona.com/indonesia/provinsi/";
@@ -17,26 +17,35 @@ class ChartBar extends HTMLElement {
         this._intTimeout = false;
         this._domTimeout = false;
 
-        this._newCase = 0;
-        this._newDeath = 0;
-        this._newRecovered = 0;
+        this._newCase = 20;
+        this._newDeath = 10;
+        this._newRecovered = 3;
 
-        this._oldCase = 0;
-        this._oldDeath = 0;
-        this._oldRecovered = 0;
+        this._oldCase = 50;
+        this._oldDeath = 70;
+        this._oldRecovered = 10;
 
         this._positifLokal = 0;
         this._sembuhLokal = 0;
         this._meninggalLokal = 0;
 
         this.config = {
-            type: "pie",
+            type: "doughnut",
             data: {
-                labels: ["Kasus Baru", "Kasus Sebelumnya", "Sembuh (baru)", "Sembuh (lama)", "Meninggal (Baru)", "Meninggal (Lama)"],
+                labels: ["Kasus Baru", "Sembuh (baru)", "Meninggal (Baru)"],
                 datasets: [{
-                    data: [this._newCase, this._oldCase, this._newRecovered, this._oldRecovered, this._newDeath, this._oldDeath, this._positifLokal, this._sembuhLokal, this._MeninggalLokal],
-                    backgroundColor: ["#D4251C", "#AF130B", "#41E1F2", "#4636a8", "#4d4747", "#383535"],
+                    data: [this._newCase, this._newRecovered, this._newDeath, this._positifLokal, this._sembuhLokal, this._MeninggalLokal],
+                    backgroundColor: ["#EE575E", "#627DBC", "#7A7A7A", "#4636a8", "#4d4747", "#383535"],
                 }]
+            },
+            options: {
+                legend: {
+                    display: false,
+                    position: 'bottom',
+                },
+                maintainAspecRatio: true,
+                aspectRatio: 1,
+                cutoutPercentage: 60,
             }
         }
     }
@@ -239,7 +248,7 @@ class ChartBar extends HTMLElement {
         this.chartElement = document.getElementById("chart");
         this.doughnutChart = new Chart(this.chartElement, this.config);
 
-        this.refreshData();
+        // this.refreshData();
     }
 
 
