@@ -1,9 +1,11 @@
 ##  TODO    ##
 
 +   kerjakan semua sub bagian website (potrait)
-*   kerjakan semua sub bagian website (potrait dark)
-*   kerjakan semua sub bagian website (landscape)
-*   kerjakan semua sub bagian website (landscape dark)
++   kerjakan semua sub bagian website (potrait dark)
++   kerjakan semua sub bagian website (landscape)
++   kerjakan semua sub bagian website (landscape dark)
+
+*   kerjakan bagian settings (portrait dan landscape)
 
 
 # +   tambah fitur deteksi koneksi 

@@ -11,7 +11,7 @@ class ListBar extends HTMLElement {
         this._meninggalLokal = 0;
 
         this._type = "dom";
-        this._theme = "dark";
+        this._theme = "light";
     }
 
     connectedCallback() {

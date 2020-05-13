@@ -1,7 +1,8 @@
-@import "../styles/components/header-bar.css";
-@import "../styles/components/chart-bar.css";
-@import "../styles/components/search-bar.css";
-@import "../styles/components/list-bar.css";
+@import "../styles/components/portrait/header-bar.css";
+@import "../styles/components/portrait/chart-bar.css";
+@import "../styles/components/portrait/search-bar.css";
+@import "../styles/components/portrait/list-bar.css";
+@import "../styles/components/portrait/settings-bar.css";
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +11,8 @@
 body {
     font-family: 'Open Sans', sans-serif;
     transition: .4s all;
+    position: relative;
+    height: 1000px;
 }
 
 body.light {
@@ -25,6 +28,10 @@ body.dark {
     width: 100vw;
     display: flex;
     flex-direction: column;
+}
+
+.container>*:not(settings-bar) {
+    position: relative;
 }
 
 .container.light {

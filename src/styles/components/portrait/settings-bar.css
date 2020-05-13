@@ -1,0 +1,176 @@
+settings-bar {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: rgba(122, 122, 122, .5);
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s all;
+}
+
+settings-bar.showed {
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu>.settingsHeader {
+    display: none;
+}
+
+settings-bar>.menu {
+    margin-top: 69px;
+    width: 100%;
+    height: max-content;
+    background-color: #EFEEEE;
+    border-radius: 0 0 30px 30px;
+    position: relative;
+    top: -100%;
+    transition: 1s all;
+}
+
+.menu.showed {
+    top: 0%;
+}
+
+.menu>div {
+    height: 65px;
+    width: 100%;
+}
+
+.menu>div>div:not(.refresh):not(.repo):not(.toggleLang) {
+    float: left;
+    width: 50%;
+    margin: 20px 0;
+}
+
+.menu p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.menu p.left {
+    color: #121212;
+    margin-left: 30px;
+}
+
+.menu p.right {
+    width: 70px;
+    margin: auto;
+}
+
+.menu p.success {
+    color: #1E4398;
+}
+
+.menu p.failed {
+    color: #A00009;
+}
+
+.menu p.loading {
+    color: #121212;
+}
+
+.toggleLang {
+    width: 120px;
+    margin: auto;
+}
+
+.toggleLang>* {
+    float: left;
+    margin: 0 5px;
+}
+
+.toggleLang .switch {
+    margin-top: 3px;
+    display: block;
+    height: 20px;
+    position: relative;
+    width: 45px;
+}
+
+.toggleLang .switch input {
+    display: none;
+}
+
+.toggleLang .slider {
+    background-color: #fff;
+    border: #707070 solid 1px;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.toggleLang .slider:before {
+    background-color: #707070;
+    bottom: 1.5px;
+    content: "";
+    height: 15px;
+    left: 2px;
+    position: absolute;
+    transition: .4s;
+    width: 15px;
+}
+
+.toggleLang input.others:checked+.slider:before {
+    transform: translateX(23px);
+}
+
+.toggleLang .slider.round {
+    border-radius: 34px;
+    box-shadow: 6px 6px 16px rgba(122, 122, 122, .25);
+}
+
+.toggleLang .slider.round:before {
+    border-radius: 50%;
+}
+
+.refreshContainer,
+.repoContainer {
+    height: max-content !important;
+    padding: 10px 0;
+}
+
+.refresh {
+    margin: auto;
+    width: max-content;
+    background: rgba(122, 122, 122, .1);
+    float: inherit;
+    padding: 10px 50px;
+    border: #707070 1px solid;
+    border-radius: 30px;
+    margin-top: 5px;
+    box-shadow: 6px 6px 16px rgba(153, 132, 132, 0.16);
+    cursor: pointer;
+    transition: .3s all;
+}
+
+.refresh:hover {
+    background: rgba(122, 122, 122, .3);
+}
+
+.repo {
+    margin: auto;
+    width: max-content;
+    height: 20px;
+}
+
+.repo>* {
+    float: left;
+}
+
+.repo p {
+    font-size: 15px;
+    cursor: pointer;
+    color: #121212;
+}
+
+.repo i {
+    font-size: 20px;
+    margin-right: 10.5px;
+}

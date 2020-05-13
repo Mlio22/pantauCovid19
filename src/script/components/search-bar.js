@@ -9,7 +9,7 @@ class SearchBar extends HTMLElement {
         this._status = false;
 
         this._firstTime = true;
-        this._theme = "dark";
+        this._theme = "light";
     }
 
     connectedCallback() {

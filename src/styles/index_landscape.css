@@ -1,0 +1,54 @@
+@import "../styles/components/landscape/header-bar.css";
+@import "../styles/components/landscape/chart-bar.css";
+@import "../styles/components/landscape/search-bar.css";
+@import "../styles/components/landscape/list-bar.css";
+@import "../styles/components/landscape/settings-bar.css";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    transition: .4s all;
+}
+
+body.light {
+    background-color: #efeeee;
+}
+
+body.dark {
+    background-color: #292929;
+}
+
+.container {
+    transition: .4s all;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.container.light {
+    background-color: #efeeee;
+}
+
+.container.dark {
+    background-color: #292929;
+}
+
+.container>div {
+    width: 100%;
+    margin: 10px auto;
+    height: max-content;
+    display: flex;
+}
+
+.container>div>* {
+    float: left;
+    width: calc(50% - 1px);
+    margin: auto;
+}
+
+.information>.left {
+    border-right: #707070 solid 1px;
+}

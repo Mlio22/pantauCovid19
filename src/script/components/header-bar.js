@@ -6,12 +6,32 @@ class HeaderBar extends HTMLElement {
     connectedCallback() {
         this._status = true;
         this._theme = "light";
+        this._isSettingsOn = false;
         this.render();
     }
 
     set connectivity(status) {
         this._status = status;
         this.render();
+    }
+
+    toggleSettings() {
+        this.querySelector(".settingsContainer").classList.toggle("settingsOn");
+        this.classList.toggle("settingsOn");
+
+        document.querySelector("settings-bar").classList.toggle("showed");
+        document.querySelector("settings-bar .menu").classList.toggle("showed");
+
+        this._isSettingsOn = !this._isSettingsOn;
+
+        if (this._isSettingsOn) {
+            document.body.style.overflowY = "hidden";
+            document.body.style.touchAction = "none";
+        } else {
+            document.body.style.overflowY = "auto";
+            document.body.style.touchAction = "auto";
+
+        }
     }
 
     render() {
@@ -27,8 +47,8 @@ class HeaderBar extends HTMLElement {
         const themeToggleContainer = document.createElement("div");
         themeToggleContainer.className = `toggleThemeContainer`;
 
-        themeToggleContainer.innerHTML = `<label class="switch" for="checkbox">
-        <input type="checkbox" id="checkbox" />
+        themeToggleContainer.innerHTML = `<label class="switch header" for="checkbox">
+        <input class="toggleTheme" type="checkbox" id="themeToggle" />
         <div class="slider round"></div>
         </label>`;
 
@@ -40,7 +60,7 @@ class HeaderBar extends HTMLElement {
         const settingsContainer = document.createElement("div");
         settingsContainer.className = `settingsContainer ${this._theme}`;
 
-        settingsContainer.innerHTML = `<i class="fas fa-cog"></i>`;
+        settingsContainer.innerHTML = `<i class="fas fa-times"></i><i class="fas fa-cog"></i>`;
 
         headerContainer.appendChild(themeToggleContainer);
         headerContainer.appendChild(headerTextContainer);
@@ -48,9 +68,14 @@ class HeaderBar extends HTMLElement {
 
         this.appendChild(headerContainer);
 
-        const toggleThemeButton = this.querySelector("input[type='checkbox']");
+        const toggleThemeDiv = this.querySelector(".switch.header");
+        const toggleThemeButton = this.querySelector("input#themeToggle");
 
-        toggleThemeButton.addEventListener('change', _ => {
+        toggleThemeDiv.addEventListener("click", _ => {
+            toggleThemeButton.checked = !toggleThemeButton.checked;
+            headerTextContainer.classList.remove(this._theme);
+            settingsContainer.classList.remove(this._theme);
+
 
             if (toggleThemeButton.checked == true) {
                 this._theme = 'dark';
@@ -59,10 +84,17 @@ class HeaderBar extends HTMLElement {
             }
 
             headerContainer.className = `${this._theme}`;
-            headerTextContainer.className = `headerTextContainer ${this._theme}`;
-            settingsContainer.className = `settingsContainer ${this._theme}`;
+            headerTextContainer.classList.add(this._theme);
+            settingsContainer.classList.add(this._theme);
             this.setOthersTheme();
+
+        })
+
+        this.querySelector(".settingsContainer").addEventListener("click", _ => {
+            this.toggleSettings();
         });
+
+
     }
 
     setOthersTheme() {

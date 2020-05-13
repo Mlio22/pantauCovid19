@@ -1,0 +1,7 @@
+chart-bar {
+    margin: 0 auto;
+    min-width: 225px;
+    max-width: 250px;
+    padding: 30px 10px 10px;
+    display: block;
+}
