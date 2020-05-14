@@ -103,6 +103,7 @@ class HeaderBar extends HTMLElement {
         document.querySelector("chart-bar").theme = this._theme;
         document.querySelector("search-bar").theme = this._theme;
         document.querySelector("list-bar").theme = this._theme;
+        document.querySelector("settings-bar").theme = this._theme;
     }
 }
 

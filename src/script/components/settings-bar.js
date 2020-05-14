@@ -1,26 +1,51 @@
 class SettingsBar extends HTMLElement {
     constructor() {
         super();
-        this._isOnline = true;
+        this._isOnline = "Online";
         this._localData = "Offline";
-        this._globalData = "Online";
+        this._globalData = "Loading..";
+        this._theme = 'dark';
+        this.className = this._theme;
     }
 
     connectedCallback() {
         this.render();
         console.log('aowk');
+    }
+
+    set theme(color) {
+        console.log('aowkaowk');
+        this.classList.remove(this._theme);
+        this.classList.add(color);
+        this.querySelector("div.menu").classList.remove(this._theme);
+        this.querySelector("div.menu").classList.add(color);
+        this.querySelectorAll(".menu p").forEach(p => {
+            p.classList.remove(this._theme);
+            p.classList.add(color);
+        });
+        this.querySelectorAll(".menu i").forEach(i => {
+            i.classList.remove(this._theme);
+            i.classList.add(color);
+        });
+        this.querySelector(".toggleLang").classList.remove(this._theme);
+        this.querySelector(".toggleLang").classList.add(color);
+        this.querySelector(".refresh").classList.remove(this._theme);
+        this.querySelector(".refresh").classList.add(color);
+
+
+        this._theme = color;
 
     }
 
     render() {
-        const menu = document.createElement("div");
-        menu.className = "menu";
+        this.menu = document.createElement("div");
+        this.menu.className = `menu ${this._theme}`;
 
-        menu.innerHTML = `<div class="settingsHeader"><i class="fas fa-arrow-right"></i><p>Pengaturan</p></div>`
+        this.menu.innerHTML = `<div class="settingsHeader"><i class="fas fa-arrow-right"></i><p>Pengaturan</p></div>`
 
 
         const statusDiv = document.createElement("div");
-        statusDiv.innerHTML = `<div><p class="left">Status</p></div><div><p class="right success">Online</p></div>`
+        statusDiv.innerHTML = `<div><p class="left">Status</p></div><div><p class="right success ${this._theme}">${this._isOnline}</p></div>`
 
         const languageDiv = document.createElement("div");
         languageDiv.className = "langContainer";
@@ -38,10 +63,10 @@ class SettingsBar extends HTMLElement {
         `;
 
         const localDataDiv = document.createElement("div");
-        localDataDiv.innerHTML = `<div><p class="left">Data Lokal</p></div><div><p class="right failed">Offline</p></div>`
+        localDataDiv.innerHTML = `<div><p class="left">Data Lokal</p></div><div><p class="right failed ${this._theme}">${this._localData}</p></div>`
 
         const globalDataDiv = document.createElement("div");
-        globalDataDiv.innerHTML = `<div><p class="left">Data Global</p></div><div><p class="right loading">Loading</p></div>`
+        globalDataDiv.innerHTML = `<div><p class="left">Data Global</p></div><div><p class="right loading ${this._theme}">${this._globalData}</p></div>`
 
         const refreshDiv = document.createElement("div");
         refreshDiv.className = "refreshContainer";
@@ -51,14 +76,14 @@ class SettingsBar extends HTMLElement {
         repoDiv.className = "repoContainer";
         repoDiv.innerHTML = `<div class="repo exception"><i class="fab fa-github"></i><a href="https://google.com"><p>Github Repo</p></a></div>`
 
-        menu.appendChild(languageDiv);
-        menu.appendChild(statusDiv);
-        menu.appendChild(localDataDiv);
-        menu.appendChild(globalDataDiv);
-        menu.appendChild(refreshDiv);
-        menu.appendChild(repoDiv);
+        this.menu.appendChild(languageDiv);
+        this.menu.appendChild(statusDiv);
+        this.menu.appendChild(localDataDiv);
+        this.menu.appendChild(globalDataDiv);
+        this.menu.appendChild(refreshDiv);
+        this.menu.appendChild(repoDiv);
 
-        this.appendChild(menu);
+        this.appendChild(this.menu);
 
         const toggleLangDiv = this.querySelector(".langSettings");
         const toggleLangButton = this.querySelector("#langToggle");

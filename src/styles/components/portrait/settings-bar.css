@@ -4,10 +4,17 @@ settings-bar {
     width: 100vw;
     top: 0;
     left: 0;
-    background-color: rgba(122, 122, 122, .5);
     visibility: hidden;
     opacity: 0;
     transition: .5s all;
+}
+
+settings-bar.light {
+    background-color: rgba(122, 122, 122, .5);
+}
+
+settings-bar.dark {
+    background-color: rgba(240, 240, 240, .5);
 }
 
 settings-bar.showed {
@@ -23,11 +30,18 @@ settings-bar>.menu {
     margin-top: 69px;
     width: 100%;
     height: max-content;
-    background-color: #EFEEEE;
     border-radius: 0 0 30px 30px;
     position: relative;
     top: -100%;
-    transition: 1s all;
+    transition: 1s top, .4s background-color;
+}
+
+.menu.light {
+    background-color: #EFEEEE;
+}
+
+.menu.dark {
+    background-color: #4C4B4B;
 }
 
 .menu.showed {
@@ -51,8 +65,15 @@ settings-bar>.menu {
 }
 
 .menu p.left {
-    color: #121212;
     margin-left: 30px;
+}
+
+.menu p.light {
+    color: #121212;
+}
+
+.menu p.dark {
+    color: #efeeee;
 }
 
 .menu p.right {
@@ -60,16 +81,28 @@ settings-bar>.menu {
     margin: auto;
 }
 
-.menu p.success {
+.menu p.success.light {
     color: #1E4398;
 }
 
-.menu p.failed {
+.menu p.failed.light {
     color: #A00009;
 }
 
-.menu p.loading {
+.menu p.loading.light {
     color: #121212;
+}
+
+.menu p.success.dark {
+    color: #ACC4FE;
+}
+
+.menu p.failed.dark {
+    color: #FF696F;
+}
+
+.menu p.loading.dark {
+    color: #EFEEEE;
 }
 
 .toggleLang {
@@ -95,7 +128,6 @@ settings-bar>.menu {
 }
 
 .toggleLang .slider {
-    background-color: #fff;
     border: #707070 solid 1px;
     bottom: 0;
     cursor: pointer;
@@ -106,8 +138,16 @@ settings-bar>.menu {
     transition: .4s;
 }
 
+.toggleLang.light .slider {
+    background-color: #fff;
+}
+
+.toggleLang.dark .slider {
+    background-color: #292929;
+    border: #707070 solid 1px;
+}
+
 .toggleLang .slider:before {
-    background-color: #707070;
     bottom: 1.5px;
     content: "";
     height: 15px;
@@ -117,13 +157,28 @@ settings-bar>.menu {
     width: 15px;
 }
 
+.toggleLang.light .slider:before {
+    background-color: #707070;
+}
+
+.toggleLang.dark .slider:before {
+    background-color: #f0f0f0;
+}
+
 .toggleLang input.others:checked+.slider:before {
     transform: translateX(23px);
 }
 
 .toggleLang .slider.round {
     border-radius: 34px;
+}
+
+.toggleLang.light .slider.round {
     box-shadow: 6px 6px 16px rgba(122, 122, 122, .25);
+}
+
+.toggleLang.light .slider.round {
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, .16);
 }
 
 .toggleLang .slider.round:before {
@@ -139,15 +194,23 @@ settings-bar>.menu {
 .refresh {
     margin: auto;
     width: max-content;
-    background: rgba(122, 122, 122, .1);
     float: inherit;
     padding: 10px 50px;
     border: #707070 1px solid;
     border-radius: 30px;
     margin-top: 5px;
-    box-shadow: 6px 6px 16px rgba(153, 132, 132, 0.16);
     cursor: pointer;
     transition: .3s all;
+}
+
+.refresh.light {
+    background: rgba(122, 122, 122, .1);
+    box-shadow: 6px 6px 16px rgba(153, 132, 132, 0.16);
+}
+
+.refresh.dark {
+    background-color: #696969;
+    box-shadow: 6px 6px 16px rgba(18, 18, 18, .5);
 }
 
 .refresh:hover {
@@ -162,6 +225,7 @@ settings-bar>.menu {
 
 .repo>* {
     float: left;
+    text-decoration: none;
 }
 
 .repo p {
@@ -173,4 +237,12 @@ settings-bar>.menu {
 .repo i {
     font-size: 20px;
     margin-right: 10.5px;
+}
+
+.menu i.light {
+    color: #000;
+}
+
+.menu i.dark {
+    color: #efeeee;
 }
