@@ -2,13 +2,13 @@ import "../../../node_modules/chart.js/dist/Chart.min.js";
 
 const baseUrlInt = "https://api.covid19api.com/summary";
 const baseUrlDom = "https://api.kawalcorona.com/indonesia/provinsi/";
-const fetchTimeout = 10000;
+const fetchTimeout = 3000;
 
 class ChartBar extends HTMLElement {
     constructor() {
         super();
-        this._country = "Global";
-        this._slug = "";
+        this._country = "Indonesia";
+        this._slug = "indonesia";
         this._province = "Global";
 
         this._intStatus = false;
@@ -17,13 +17,9 @@ class ChartBar extends HTMLElement {
         this._intTimeout = false;
         this._domTimeout = false;
 
-        this._newCase = 20;
-        this._newDeath = 10;
-        this._newRecovered = 3;
-
-        this._oldCase = 50;
-        this._oldDeath = 70;
-        this._oldRecovered = 10;
+        this._case = 20;
+        this._death = 10;
+        this._recovered = 3;
 
         this._positifLokal = 0;
         this._sembuhLokal = 0;
@@ -32,9 +28,9 @@ class ChartBar extends HTMLElement {
         this.config = {
             type: "doughnut",
             data: {
-                labels: ["Kasus Baru", "Sembuh (baru)", "Meninggal (Baru)"],
+                labels: ["Kasus", "Sembuh", "Meninggal"],
                 datasets: [{
-                    data: [this._newCase, this._newRecovered, this._newDeath, this._positifLokal, this._sembuhLokal, this._MeninggalLokal],
+                    data: [this._case, this._recovered, this._death, this._positifLokal, this._sembuhLokal, this._MeninggalLokal],
                     backgroundColor: ["#EE575E", "#627DBC", "#7A7A7A", "#4636a8", "#4d4747", "#383535"],
                 }]
             },
@@ -51,6 +47,8 @@ class ChartBar extends HTMLElement {
     }
 
     set urlLocation(locationObject) {
+        console.log(locationObject);
+
         this._country = locationObject.country;
         this._province = locationObject.province;
         this._slug = locationObject.slug;
@@ -95,8 +93,6 @@ class ChartBar extends HTMLElement {
                     "meninggalLokal": this._meninggalLokal
                 }
 
-                this.config.data.labels = ["Positif", "Sembuh", "Meninggal"];
-                this.config.data.datasets[0].backgroundColor = ["#D4251C", "#41E1F2", "#4d4747"];
                 this.config.data.datasets[0].data = [this._positifLokal, this._sembuhLokal, this._meninggalLokal];
 
             } else if (this._country != "Indonesia" && this._intStatus) {
@@ -110,15 +106,14 @@ class ChartBar extends HTMLElement {
                 }
                 if (this._country == "Global") {
                     let data = this._intData.Global;
+                    console.log(data);
 
-                    this._oldCase = data.TotalConfirmed - data.NewConfirmed;
-                    this._newCase = data.NewConfirmed;
 
-                    this._oldDeath = data.TotalDeaths - data.NewDeaths;
-                    this._newDeath = data.NewDeaths;
+                    this._case = data.TotalConfirmed;
 
-                    this._oldRecovered = data.TotalRecovered - data.NewRecovered;
-                    this._newRecovered = data.NewRecovered;
+                    this._death = data.TotalDeaths;
+
+                    this._recovered = data.TotalRecovered;
                 }
 
                 this._intData.Countries.forEach(data => {
@@ -126,30 +121,22 @@ class ChartBar extends HTMLElement {
                     if (data.Country == this._country) {
                         console.log(data);
 
-                        this._oldCase = data.TotalConfirmed - data.NewConfirmed;
-                        this._newCase = data.NewConfirmed;
+                        this._case = data.TotalConfirmed;
 
-                        this._oldDeath = data.TotalDeaths - data.NewDeaths;
-                        this._newDeath = data.NewDeaths;
+                        this._death = data.TotalDeaths;
 
-                        this._oldRecovered = data.TotalRecovered - data.NewRecovered;
-                        this._newRecovered = data.NewRecovered;
+                        this._recovered = data.TotalRecovered;
                     }
                 });
 
                 document.querySelector("list-bar").data = {
                     "type": "int",
-                    "newCase": this._newCase,
-                    "oldCase": this._oldCase,
-                    "newDeath": this._newDeath,
-                    "oldDeath": this._oldDeath,
-                    "newRecovered": this._newRecovered,
-                    "oldRecovered": this._oldRecovered
+                    "case": this._case,
+                    "death": this._death,
+                    "recovered": this._recovered,
                 }
 
-                this.config.data.labels = ["Kasus Baru", "Kasus Sebelumnya", "Sembuh (baru)", "Sembuh (lama)", "Meninggal (Baru)", "Meninggal (Lama)"];
-                this.config.data.datasets[0].backgroundColor = ["#D4251C", "#AF130B", "#41E1F2", "#4636a8", "#4d4747", "#383535"];
-                this.config.data.datasets[0].data = [this._newCase, this._oldCase, this._newRecovered, this._oldRecovered, this._newDeath, this._oldDeath];
+                this.config.data.datasets[0].data = [this._case, this._recovered, this._death];
 
             } else {
                 document.querySelector("search-bar").setAvailableDefault();
@@ -167,7 +154,10 @@ class ChartBar extends HTMLElement {
         return new Promise(resolve => {
             const to1 = setTimeout(() => {
                 this._intTimeout = true;
+                console.log('timeout global');
+
                 resolve("");
+
             }, fetchTimeout);
 
             fetch(baseUrlInt)
@@ -183,6 +173,8 @@ class ChartBar extends HTMLElement {
                 .then(responseJson => {
                     clearTimeout(to1);
                     this._intStatus = true;
+                    console.log('success global');
+
                     this._intData = responseJson;
                 })
                 .then(_ => resolve(""))
@@ -198,10 +190,14 @@ class ChartBar extends HTMLElement {
         return new Promise(resolve => {
             const to2 = setTimeout(() => {
                 this._domTimeout = true;
+                console.log('timeout local');
+
                 resolve("");
             }, fetchTimeout);
 
-            fetch(baseUrlDom)
+            fetch(baseUrlDom, {
+                    mode: "no-cors"
+                })
                 .then(response => {
                     return new Promise((resolve, reject) => {
 
@@ -218,10 +214,12 @@ class ChartBar extends HTMLElement {
                     this._domData = responseJson;
                 })
                 .then(_ => resolve(""))
-                .catch(_ => {
+                .catch(response => {
+                    console.log(response);
+
                     clearTimeout(to2);
                     resolve("");
-                });
+                })
 
         });
 
@@ -231,7 +229,6 @@ class ChartBar extends HTMLElement {
         this.promiseAllFetchData = [this.fetchIntData(), this.fetchDomData()];
         Promise.all(this.promiseAllFetchData)
             .then(_ => {
-
                 document.querySelector("search-bar").dataAvailablity = {
                     "isDomAvailable": this._domStatus,
                     "isIntAvailable": this._intStatus
@@ -248,10 +245,8 @@ class ChartBar extends HTMLElement {
         this.chartElement = document.getElementById("chart");
         this.doughnutChart = new Chart(this.chartElement, this.config);
 
-        // this.refreshData();
+        this.refreshData();
     }
-
-
 
     updateChart() {
         this.doughnutChart.update();

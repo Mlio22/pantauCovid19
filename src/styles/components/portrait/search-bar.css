@@ -22,6 +22,7 @@ search-bar>.searchElement {
     padding: 10px 30px;
     margin: 8px auto 0 auto;
     border-radius: 30px;
+    transition: .4s all;
 }
 
 .searchElement.light {
@@ -31,7 +32,15 @@ search-bar>.searchElement {
     color: #2B0D0D;
 }
 
+.searchElement.light:hover {
+    background-color: rgba(181, 181, 181, .5);
+}
+
 .searchElement.dark {
     color: #efeeee;
     background-color: #696969;
+}
+
+.searchElement.dark:hover {
+    background-color: rgba(122, 122, 122, .3) !important;
 }

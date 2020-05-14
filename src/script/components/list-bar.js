@@ -10,7 +10,7 @@ class ListBar extends HTMLElement {
         this._sembuhLokal = 0;
         this._meninggalLokal = 0;
 
-        this._type = "dom";
+        this._type = "int";
         this._theme = "light";
     }
 
@@ -18,25 +18,21 @@ class ListBar extends HTMLElement {
         this.render();
     }
 
+    formatNumber(number = 0) {
+        return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    }
+
     set data(chartData) {
-        console.log("hello");
-        this._type = chartData.type;
-
         if (this._type == "int") {
-            this._newCase = chartData.newCase;
-            this._newDeath = chartData.newDeath;
-            this._newRecovered = chartData.newRecovered;
-
-            this._oldCase = chartData.oldCase;
-            this._oldDeath = chartData.oldDeath;
-            this._oldRecovered = chartData.oldRecovered;
+            this._case = this.formatNumber(chartData.case);
+            this._death = this.formatNumber(chartData.death);
+            this._recovered = this.formatNumber(chartData.recovered);
         } else {
-            this._positifLokal = chartData.positifLokal;
-            this._sembuhLokal = chartData.sembuhLokal;
-            this._meninggalLokal = chartData.meninggalLokal;
+            this._case = this.formatNumber(chartData.positifLokal);
+            this._death = this.formatNumber(chartData.sembuhLokal);
+            this._recovered = this.formatNumber(chartData.meninggalLokal);
         }
-
-        console.log(chartData);
+        // console.log(chartData);
 
         this.render();
     }
@@ -63,9 +59,9 @@ class ListBar extends HTMLElement {
         divElement2.className = `${this._theme}`;
         divElement3.className = `${this._theme}`;
 
-        divElement1.innerHTML = `<p class='text kasus'>Total Kasus</p><p class="data kasus">10.000</p>`;
-        divElement2.innerHTML = `<p class='text sembuh'>Sembuh</p><p class="data sembuh">200.000</p>`;
-        divElement3.innerHTML = `<p class='text meninggal'>Meninggal</p><p class="data meninggal">10</p>`;
+        divElement1.innerHTML = `<p class='text kasus'>Total Kasus</p><p class="data kasus">${this._case}</p>`;
+        divElement2.innerHTML = `<p class='text sembuh'>Sembuh</p><p class="data sembuh">${this._recovered}</p>`;
+        divElement3.innerHTML = `<p class='text meninggal'>Meninggal</p><p class="data meninggal">${this._death}</p>`;
 
         // if (this._type == "int") {
         //     divElement1.innerHTML += `<p class="oldData">${this._oldDeath}</p><p class="newData">+ ${this._newDeath}</p>`;

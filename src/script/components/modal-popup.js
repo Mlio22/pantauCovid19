@@ -8,9 +8,9 @@ class ModalPopup extends HTMLElement {
     constructor() {
         super();
 
-        this._selectedCountry = "Global";
-        this._selectedProvince = "";
-        this._selectedCountrySlug = "global";
+        this._selectedCountry = "Indonesia";
+        this._selectedProvince = "DKI Jakarta";
+        this._selectedCountrySlug = "indonesia";
 
         this._intStatus = true;
         this._domStatus = true;
@@ -186,6 +186,8 @@ class ModalPopup extends HTMLElement {
                 }
 
                 document.querySelector("chart-bar").urlLocation = {
+                    "trigger": "modal",
+
                     "country": this._selectedCountry,
                     "province": this._selectedProvince,
                     "slug": this._selectedCountrySlug
