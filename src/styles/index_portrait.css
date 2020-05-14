@@ -12,7 +12,6 @@ body {
     font-family: 'Open Sans', sans-serif;
     transition: .4s all;
     position: relative;
-    height: 1000px;
 }
 
 body.light {

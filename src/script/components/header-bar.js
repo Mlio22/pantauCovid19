@@ -93,8 +93,6 @@ class HeaderBar extends HTMLElement {
         this.querySelector(".settingsContainer").addEventListener("click", _ => {
             this.toggleSettings();
         });
-
-
     }
 
     setOthersTheme() {

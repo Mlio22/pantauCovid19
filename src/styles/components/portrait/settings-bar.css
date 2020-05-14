@@ -144,7 +144,6 @@ settings-bar>.menu {
 
 .toggleLang.dark .slider {
     background-color: #292929;
-    border: #707070 solid 1px;
 }
 
 .toggleLang .slider:before {
