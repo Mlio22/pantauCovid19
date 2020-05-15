@@ -97,8 +97,9 @@ class ChartBar extends HTMLElement {
                 this.config.data.datasets[0].data = [this._positifLokal, this._sembuhLokal, this._meninggalLokal];
 
             } else if (this._country != "Indonesia" && this._intStatus) {
-                console.log("masuk sini");
-
+                this._case = -1;
+                this._death = -1;
+                this._recovered = -1;
 
                 if (this._intTimeout) {
                     console.log("Data International RTO");
@@ -117,10 +118,6 @@ class ChartBar extends HTMLElement {
                 }
 
                 this._intData.Countries.forEach(data => {
-
-                    this._case = -1;
-                    this._death = -1;
-                    this._recovered = -1;
 
                     if (data.Country == this._country) {
                         console.log(data);
