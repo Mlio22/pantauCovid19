@@ -2,6 +2,7 @@
 @import "../styles/components/portrait/chart-bar.css";
 @import "../styles/components/portrait/search-bar.css";
 @import "../styles/components/portrait/list-bar.css";
+@import "../styles/components/portrait/modal.css";
 @import "../styles/components/portrait/settings-bar.css";
 * {
     margin: 0;

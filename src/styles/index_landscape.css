@@ -2,6 +2,7 @@
 @import "../styles/components/landscape/chart-bar.css";
 @import "../styles/components/landscape/search-bar.css";
 @import "../styles/components/landscape/list-bar.css";
+@import "../styles/components/landscape/modal.css";
 @import "../styles/components/landscape/settings-bar.css";
 * {
     margin: 0;
