@@ -1,8 +1,10 @@
 import "../../../node_modules/chart.js/dist/Chart.min.js";
 
 const baseUrlInt = "https://api.covid19api.com/summary";
-const baseUrlDom = "https://api.kawalcorona.com/indonesia/provinsi/";
-const fetchTimeout = 3000;
+const baseUrlDom = "https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/provinsi/";
+const fetchTimeout = 30000;
+
+
 
 class ChartBar extends HTMLElement {
     constructor() {
@@ -17,9 +19,9 @@ class ChartBar extends HTMLElement {
         this._intTimeout = false;
         this._domTimeout = false;
 
-        this._case = 20;
-        this._death = 10;
-        this._recovered = 3;
+        this._case = -1;
+        this._death = -1;
+        this._recovered = -1;
 
         this._positifLokal = 0;
         this._sembuhLokal = 0;
@@ -47,7 +49,7 @@ class ChartBar extends HTMLElement {
     }
 
     set urlLocation(locationObject) {
-        console.log(locationObject);
+        // console.log(locationObject);
 
         this._country = locationObject.country;
         this._province = locationObject.province;
@@ -67,7 +69,6 @@ class ChartBar extends HTMLElement {
 
         if (this._domStatus || this._intStatus) {
             if (this._country == "Indonesia" && this._domStatus) {
-                console.log("masuk sini");
                 this.setLocalZero();
 
                 //? Suggestion : mengganti forEach dengan yang lain agar efisien
@@ -96,18 +97,17 @@ class ChartBar extends HTMLElement {
                 this.config.data.datasets[0].data = [this._positifLokal, this._sembuhLokal, this._meninggalLokal];
 
             } else if (this._country != "Indonesia" && this._intStatus) {
-                console.log("kok masuk sini");
+                console.log("masuk sini");
 
-                console.log(this._intData);
 
                 if (this._intTimeout) {
                     console.log("Data International RTO");
                     return 0;
                 }
+
                 if (this._country == "Global") {
                     let data = this._intData.Global;
-                    console.log(data);
-
+                    console.log(data.TotalConfirmed);
 
                     this._case = data.TotalConfirmed;
 
@@ -118,8 +118,13 @@ class ChartBar extends HTMLElement {
 
                 this._intData.Countries.forEach(data => {
 
+                    this._case = -1;
+                    this._death = -1;
+                    this._recovered = -1;
+
                     if (data.Country == this._country) {
                         console.log(data);
+                        console.log(data.TotalConfirmed);
 
                         this._case = data.TotalConfirmed;
 
@@ -186,6 +191,9 @@ class ChartBar extends HTMLElement {
 
     }
 
+    // https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe
+    //! untuk solving masalah mengenai cors error pada fetchDomData()
+
     fetchDomData() {
         return new Promise(resolve => {
             const to2 = setTimeout(() => {
@@ -195,9 +203,7 @@ class ChartBar extends HTMLElement {
                 resolve("");
             }, fetchTimeout);
 
-            fetch(baseUrlDom, {
-                    mode: "no-cors"
-                })
+            fetch(baseUrlDom)
                 .then(response => {
                     return new Promise((resolve, reject) => {
 
@@ -215,7 +221,6 @@ class ChartBar extends HTMLElement {
                 })
                 .then(_ => resolve(""))
                 .catch(response => {
-                    console.log(response);
 
                     clearTimeout(to2);
                     resolve("");

@@ -72,7 +72,6 @@ class SearchBar extends HTMLElement {
     }
 
     renderLocation() {
-        // this.message = `NUSA TENGGARA TIMUR, INDONESIA`;
         this.innerHTML = `<p class="locationHeader ${this._theme}">Wilayah :</p><p class="${this._theme} searchElement">${this.message}</p>`;
         const p = this.querySelector(".searchElement");
 
@@ -95,22 +94,20 @@ class SearchBar extends HTMLElement {
 
 
 
-            p.addEventListener("mouseover", () => {
-                console.log('aowkawok');
+            // p.addEventListener("mouseover", () => {
+            //     if (typeof(to) != undefined) {
+            //         clearTimeout(to);
+            //     }
+            //     var to = setTimeout(() => {
+            //         p.innerText = "Silahkan tekan untuk mencari...";
 
-                if (typeof(to) != undefined) {
-                    clearTimeout(to);
-                }
-                var to = setTimeout(() => {
-                    p.innerText = "Silahkan tekan untuk mencari...";
+            //     }, 100);
 
-                }, 100);
+            //     // if (this.childNodes.length < 2) {
 
-                // if (this.childNodes.length < 2) {
+            //     // }
 
-                // }
-
-            });
+            // });
 
             p.addEventListener("mouseout", () => {
 
@@ -131,6 +128,7 @@ class SearchBar extends HTMLElement {
                 //     "chart-bar": window.getComputedStyle(document.querySelector("canvas")).height,
                 //     "search-bar": window.getComputedStyle(this).height
                 // });
+                console.log(this._status);
 
                 if (this._status) {
                     const modalPopupelement = document.createElement("modal-popup");

@@ -2,13 +2,9 @@ class ListBar extends HTMLElement {
     constructor() {
         super();
 
-        this._oldCase = 0;
-        this._oldDeath = 0;
-        this._oldRecovered = 0;
-
-        this._positifLokal = 0;
-        this._sembuhLokal = 0;
-        this._meninggalLokal = 0;
+        this._case = "Loading Data...";
+        this._death = "Loading Data...";
+        this._recovered = "Loading Data...";
 
         this._type = "int";
         this._theme = "light";
@@ -23,16 +19,28 @@ class ListBar extends HTMLElement {
     }
 
     set data(chartData) {
+        this._type = chartData.type;
+
         if (this._type == "int") {
             this._case = this.formatNumber(chartData.case);
             this._death = this.formatNumber(chartData.death);
             this._recovered = this.formatNumber(chartData.recovered);
+            console.log("mya");
+
         } else {
+            console.log('myk');
+
             this._case = this.formatNumber(chartData.positifLokal);
-            this._death = this.formatNumber(chartData.sembuhLokal);
-            this._recovered = this.formatNumber(chartData.meninggalLokal);
+            this._death = this.formatNumber(chartData.meninggalLokal);
+            this._recovered = this.formatNumber(chartData.sembuhLokal);
         }
-        // console.log(chartData);
+        console.log(chartData);
+
+        if (this._case == -1) {
+            this._case = "NULL";
+            this._death = "NULL";
+            this._recovered = "NULL";
+        }
 
         this.render();
     }
