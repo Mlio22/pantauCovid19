@@ -8,21 +8,18 @@
 +   kerjakan bagian settings (portrait dan landscape)
 +   kerjakan bagian settings dark (portrait dan landscape)
 
++   integrasikan semua data custom element
 
-# +   tambah fitur deteksi koneksi 
-# *   tambah fitur mengambil ulang data jika gagal / refresh data
-# *   tambah fitur program hanya bekerja jika landscape
-# *   terapkan flexbox pada program agar responsive  
-# *   tambah loaders untuk menunggu data difetch
- 
+*   buat layout untuk desktop dan implementasikan
+*   tes untuk desktop
 
++   tambah fitur deteksi koneksi 
++   tambah fitur translasi ke bahasa inggris
++   tambah fitur mengambil ulang data jika gagal / refresh data
+*   tambah loaders untuk menunggu data difetch
+*   buat loaders dan hasil pencarian pengguna menggunakan cookie
 
-
-##  IMAGE   ##
-
-tengkorak   : https://toppng.com/uploads/preview/skull-png-images-free-download-svg-free-library-my-broom-broke-so-now-im-11563117179xaocxpzanf.png
-note        : https://toppng.com/uploads/preview/note-pencile-memo-pen-notebook-book-write-svg-icon-note-pen-icon-11553449060lx2hxjniab.png
-rumah sakit : https://img2.pngio.com/icon-hospital-medicine-png-512x512px-hospital-black-and-white-hospital-icon-png-800_800.jpg
+*   mulai gunakan webpack
 
 ##  WARNA   ##
 
@@ -38,6 +35,7 @@ Putih 2 (darker)    : #e0dadc
 ##  DEPENDENCIES    ##
 
 Chart.js
+Select2.js
 
 ##  OTHER   ##
 
