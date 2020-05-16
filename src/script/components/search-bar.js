@@ -10,6 +10,7 @@ class SearchBar extends HTMLElement {
 
         this._firstTime = true;
         this._theme = "light";
+        this._lang = true;
     }
 
     connectedCallback() {
@@ -43,6 +44,11 @@ class SearchBar extends HTMLElement {
         this.renderLocation();
     }
 
+    set lang(lang) {
+        this._lang = lang;
+        this.renderLocation();
+    }
+
     setAvailableDefault() {
         if (this._anyDataAvailable) {
             if (this._isIntAvailable) {
@@ -72,7 +78,7 @@ class SearchBar extends HTMLElement {
     }
 
     renderLocation() {
-        this.innerHTML = `<p class="locationHeader ${this._theme}">Wilayah :</p><p class="${this._theme} searchElement">${this.message}</p>`;
+        this.innerHTML = `<p class="locationHeader ${this._theme}">${this._lang ? "Wilayah" : "Region"} :</p><p class="${this._theme} searchElement">${this.message}</p>`;
         const p = this.querySelector(".searchElement");
 
 
@@ -128,8 +134,6 @@ class SearchBar extends HTMLElement {
                 //     "chart-bar": window.getComputedStyle(document.querySelector("canvas")).height,
                 //     "search-bar": window.getComputedStyle(this).height
                 // });
-                console.log(this._status);
-
                 if (this._status) {
                     const modalPopupelement = document.createElement("modal-popup");
                     modalPopupelement.selectedCountry = {

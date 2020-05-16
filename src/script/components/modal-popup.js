@@ -2,8 +2,6 @@ import countries from "../data/global-countries.js";
 import indonesiaProvinces from "../data/indonesia-provinces.js";
 import "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js";
 import "https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js";
-// import "../../../node_modules/select2/dist/js/select2.js";
-
 class ModalPopup extends HTMLElement {
     constructor() {
         super();
@@ -29,6 +27,7 @@ class ModalPopup extends HTMLElement {
             });
             this.indonesiaProvinceAddition += `</optgroup>`;
         });
+        this.indonesiaProvinceAddition += `<optgroup><option></option><option></option></optgroup>`;
 
     }
 
@@ -55,6 +54,7 @@ class ModalPopup extends HTMLElement {
     }
 
     render() {
+        document.body.style.overflow = "hidden";
         this._innerHTML = `<div class="modal">
         <div class="modal-content">
             <button class="close-button">×</button>`;
@@ -66,11 +66,15 @@ class ModalPopup extends HTMLElement {
 
             if (this._intStatus) {
                 if (!this._domStatus) {
-                    this.countryAddition.replace('<option value="indonesia">Indonesia</option>', '');
+                    console.log('dom status tidak ada jadi dihapus');
+                    this.countryAddition = this.countryAddition.replace('<option value="indonesia">Indonesia</option>', '');
                 } else {
                     const indonesiaProvinces = this.indonesiaProvinceAddition;
                 }
+                console.log(this.countryAddition);
+
                 this._innerHTML += this.countryAddition;
+
             } else if (this._domStatus) {
                 this._innerHTML += `<option value="indonesia">Indonesia</option>`;
             }
@@ -100,6 +104,8 @@ class ModalPopup extends HTMLElement {
         this.querySelector(".close-button").addEventListener("click", () => {
             this.toggle();
             setTimeout(() => {
+                document.body.style.overflow = "auto";
+
                 this.remove();
             }, 250);
         });
@@ -122,7 +128,7 @@ class ModalPopup extends HTMLElement {
 
             if (this._domStatus && this._selectedCountry == "Indonesia") {
                 $("#select-province").select2({
-                    "width": "40%",
+                    "width": "75%",
                     "minimumResultsForSearch": this.m
                 });
 
@@ -194,6 +200,8 @@ class ModalPopup extends HTMLElement {
                 }
 
                 setTimeout(() => {
+                    document.body.style.overflow = "auto";
+
                     this.remove();
                 }, 250);
             });

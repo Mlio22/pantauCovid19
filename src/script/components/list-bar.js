@@ -8,6 +8,8 @@ class ListBar extends HTMLElement {
 
         this._type = "int";
         this._theme = "light";
+
+        this._lang = true;
     }
 
     connectedCallback() {
@@ -57,6 +59,11 @@ class ListBar extends HTMLElement {
 
     }
 
+    set lang(lang) {
+        this._lang = lang;
+        this.render();
+    }
+
     render() {
         this.innerHTML = "";
         const divElement1 = document.createElement("div");
@@ -67,19 +74,9 @@ class ListBar extends HTMLElement {
         divElement2.className = `${this._theme}`;
         divElement3.className = `${this._theme}`;
 
-        divElement1.innerHTML = `<p class='text kasus'>Total Kasus</p><p class="data kasus">${this._case}</p>`;
-        divElement2.innerHTML = `<p class='text sembuh'>Sembuh</p><p class="data sembuh">${this._recovered}</p>`;
-        divElement3.innerHTML = `<p class='text meninggal'>Meninggal</p><p class="data meninggal">${this._death}</p>`;
-
-        // if (this._type == "int") {
-        //     divElement1.innerHTML += `<p class="oldData">${this._oldDeath}</p><p class="newData">+ ${this._newDeath}</p>`;
-        //     divElement2.innerHTML += `<p class="oldData">${this._oldCase}</p><p class="newData">+ ${this._newCase}</p>`;
-        //     divElement3.innerHTML += `<p class="oldData">${this._oldRecovered}</p><p class="newData">+ ${this._newRecovered}</p>`;
-        // } else {
-        //     divElement1.innerHTML += `<p class="summary">${this._meninggalLokal}</p>`;
-        //     divElement2.innerHTML += `<p class="summary">${this._positifLokal}</p>`;
-        //     divElement3.innerHTML += `<p class="summary">${this._sembuhLokal}</p>`;
-        // }
+        divElement1.innerHTML = `<p class='text kasus'>${this._lang ? "Total Kasus" : "Total Cases"}</p><p class="data kasus">${this._case}</p>`;
+        divElement2.innerHTML = `<p class='text sembuh'>${this._lang ? "Sembuh" : "Recovered"}</p><p class="data sembuh">${this._recovered}</p>`;
+        divElement3.innerHTML = `<p class='text meninggal'>${this._lang ? "Meninggal" : "Death"}</p><p class="data meninggal">${this._death}</p>`;
 
         this.appendChild(divElement1);
         this.appendChild(divElement2);

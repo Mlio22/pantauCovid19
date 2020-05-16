@@ -4,8 +4,6 @@ const baseUrlInt = "https://api.covid19api.com/summary";
 const baseUrlDom = "https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/provinsi/";
 const fetchTimeout = 100000;
 
-
-
 class ChartBar extends HTMLElement {
     constructor() {
         super();
@@ -65,7 +63,7 @@ class ChartBar extends HTMLElement {
 
     searchData() {
         document.querySelector("search-bar").ready = false;
-        console.log(this._country, this._province);
+        // console.log(this._country, this._province);
 
         if (this._domStatus || this._intStatus) {
             if (this._country == "Indonesia" && this._domStatus) {
@@ -102,13 +100,13 @@ class ChartBar extends HTMLElement {
                 this._recovered = -1;
 
                 if (this._intTimeout) {
-                    console.log("Data International RTO");
+                    // console.log("Data International RTO");
                     return 0;
                 }
 
                 if (this._country == "Global") {
                     let data = this._intData.Global;
-                    console.log(data.TotalConfirmed);
+                    // console.log(data.TotalConfirmed);
 
                     this._case = data.TotalConfirmed;
 
@@ -120,8 +118,8 @@ class ChartBar extends HTMLElement {
                 this._intData.Countries.forEach(data => {
 
                     if (data.Country == this._country) {
-                        console.log(data);
-                        console.log(data.TotalConfirmed);
+                        // console.log(data);
+                        // console.log(data.TotalConfirmed);
 
                         this._case = data.TotalConfirmed;
 
@@ -138,6 +136,13 @@ class ChartBar extends HTMLElement {
                     "recovered": this._recovered,
                 }
 
+                if (this._case == 0 && this._death == 0 && this._recovered == 0) {
+                    console.log("all zero");
+                    this._case = -1;
+                    this._death = -1;
+                    this._recovered = -1;
+                }
+
                 this.config.data.datasets[0].data = [this._case, this._recovered, this._death];
 
             } else {
@@ -148,15 +153,19 @@ class ChartBar extends HTMLElement {
             document.querySelector("search-bar").ready = true;
         } else {
             // error total
-            console.log("total error");
+            // console.log("total error");
         }
     }
 
     fetchIntData() {
+        document.querySelector("settings-bar").status = {
+            "statusGlobal": "Loading.."
+        }
         return new Promise(resolve => {
             const to1 = setTimeout(() => {
                 this._intTimeout = true;
-                console.log('timeout global');
+                this._intStatus = this._intStatus || false;
+
 
                 resolve("");
 
@@ -175,12 +184,13 @@ class ChartBar extends HTMLElement {
                 .then(responseJson => {
                     clearTimeout(to1);
                     this._intStatus = true;
-                    console.log('success global');
-
+                    // console.log('success global');
+                    console.log(responseJson);
                     this._intData = responseJson;
                 })
                 .then(_ => resolve(""))
                 .catch(_ => {
+                    this._intStatus = this._intStatus || false;
                     clearTimeout(to1);
                     resolve("");
                 });
@@ -192,11 +202,15 @@ class ChartBar extends HTMLElement {
     //! untuk solving masalah mengenai cors error pada fetchDomData()
 
     fetchDomData() {
+        document.querySelector("settings-bar").status = {
+            "statusLocal": "Loading.."
+        }
         return new Promise(resolve => {
             const to2 = setTimeout(() => {
                 this._domTimeout = true;
-                console.log('timeout local');
+                // console.log('timeout local');
 
+                this._domStatus = this._domStatus || false;
                 resolve("");
             }, fetchTimeout);
 
@@ -213,12 +227,14 @@ class ChartBar extends HTMLElement {
                 })
                 .then(responseJson => {
                     clearTimeout(to2);
+                    console.log(responseJson);
+
                     this._domStatus = true;
                     this._domData = responseJson;
                 })
                 .then(_ => resolve(""))
                 .catch(response => {
-
+                    this._domStatus = this._domStatus || false;
                     clearTimeout(to2);
                     resolve("");
                 })
@@ -228,6 +244,8 @@ class ChartBar extends HTMLElement {
     }
 
     refreshData() {
+        console.log("data refreshed");
+
         this.promiseAllFetchData = [this.fetchIntData(), this.fetchDomData()];
         Promise.all(this.promiseAllFetchData)
             .then(_ => {
@@ -236,7 +254,10 @@ class ChartBar extends HTMLElement {
                     "isIntAvailable": this._intStatus
                 };
 
-                console.log("status : ", this._domStatus, this._intStatus);
+                document.querySelector("settings-bar").status = {
+                    "statusGlobal": this._intStatus ? "Online" : "Offline",
+                    "statusLocal": this._domStatus ? "Online" : "Offline"
+                }
 
                 this.searchData();
             });

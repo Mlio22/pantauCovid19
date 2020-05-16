@@ -75,11 +75,11 @@ settings-bar .menu {
     float: left;
 }
 
-.menu p.light {
+.menu.light p {
     color: #121212;
 }
 
-.menu p.dark {
+.menu.dark p {
     color: #efeeee;
 }
 
@@ -90,6 +90,7 @@ settings-bar .menu {
 .menu p.right {
     width: 50px;
     margin: auto;
+    transition: .25s all;
 }
 
 .menu p.left,
@@ -99,27 +100,27 @@ settings-bar .menu {
     margin-bottom: 17px;
 }
 
-.menu p.success.light {
+.menu.light p.success {
     color: #1E4398;
 }
 
-.menu p.failed.light {
+.menu.light p.failed {
     color: #A00009;
 }
 
-.menu p.loading.light {
+.menu.light p.loading {
     color: #121212;
 }
 
-.menu p.success.dark {
+.menu.dark p.success {
     color: #ACC4FE;
 }
 
-.menu p.failed.dark {
+.menu.dark p.failed {
     color: #FF696F;
 }
 
-.menu p.loading.dark {
+.menu.dark p.loading {
     color: #EFEEEE;
 }
 
@@ -156,11 +157,11 @@ settings-bar .menu {
     transition: .4s;
 }
 
-.toggleLang.light .slider {
+.menu.light .toggleLang .slider {
     background-color: #fff;
 }
 
-.toggleLang.dark .slider {
+.menu.dark .toggleLang .slider {
     background-color: #292929;
 }
 
@@ -174,15 +175,15 @@ settings-bar .menu {
     width: 15px;
 }
 
-.toggleLang.light .slider:before {
+.menu.light .toggleLang .slider:before {
     background-color: #707070;
 }
 
-.toggleLang.dark .slider:before {
+.menu.dark .toggleLang .slider:before {
     background-color: #f0f0f0;
 }
 
-.toggleLang input.others:checked+.slider:before {
+.toggleLang input#langToggle:checked+.slider:before {
     transform: translateX(23px);
 }
 
@@ -194,7 +195,7 @@ settings-bar .menu {
     box-shadow: 6px 6px 16px rgba(122, 122, 122, .25);
 }
 
-.toggleLang.light .slider.round {
+.toggleLang.dark .slider.round {
     box-shadow: 6px 6px 16px rgba(0, 0, 0, .16);
 }
 
@@ -222,12 +223,12 @@ settings-bar .menu {
     transition: .3s all;
 }
 
-.refresh.light {
+.menu.light .refresh {
     background: rgba(122, 122, 122, .1);
     box-shadow: 6px 6px 16px rgba(153, 132, 132, 0.16);
 }
 
-.refresh.dark {
+.menu.dark .refresh {
     background-color: #696969;
     box-shadow: 6px 6px 16px rgba(18, 18, 18, .5);
 }
@@ -266,10 +267,10 @@ settings-bar .menu {
     font-size: 12px;
 }
 
-.menu i.light {
+.menu.light i {
     color: #000;
 }
 
-.menu i.dark {
+.menu.dark i {
     color: #efeeee;
 }

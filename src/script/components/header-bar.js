@@ -7,12 +7,9 @@ class HeaderBar extends HTMLElement {
         this._status = true;
         this._theme = "light";
         this._isSettingsOn = false;
+        this._lang = true;
         this.render();
-    }
 
-    set connectivity(status) {
-        this._status = status;
-        this.render();
     }
 
     toggleSettings() {
@@ -23,6 +20,8 @@ class HeaderBar extends HTMLElement {
         document.querySelector("settings-bar .menu").classList.toggle("showed");
 
         this._isSettingsOn = !this._isSettingsOn;
+        document.querySelector("settings-bar").show = this._isSettingsOn;
+
 
         if (this._isSettingsOn) {
             document.body.style.overflowY = "hidden";
@@ -32,6 +31,13 @@ class HeaderBar extends HTMLElement {
             document.body.style.touchAction = "auto";
 
         }
+    }
+
+    set lang(lang) {
+        console.log(lang);
+
+        this.querySelector(".headerTextContainer .first").innerHTML = this._lang ? "Track" : "Pantau";
+        this._lang = lang;
     }
 
     render() {
@@ -55,7 +61,7 @@ class HeaderBar extends HTMLElement {
         const headerTextContainer = document.createElement("div");
         headerTextContainer.className = `headerTextContainer ${this._theme}`;
 
-        headerTextContainer.innerHTML = `<p class="first">Pantau</p><p class="last">COVID-19</p>`;
+        headerTextContainer.innerHTML = `<p class="first">${this._lang ? "Pantau" : "Track"}</p><p class="last">COVID-19</p>`;
 
         const settingsContainer = document.createElement("div");
         settingsContainer.className = `settingsContainer ${this._theme}`;
