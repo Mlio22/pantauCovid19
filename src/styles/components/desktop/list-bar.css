@@ -1,0 +1,90 @@
+list-bar {
+    margin: auto;
+    margin-top: 50px;
+    display: flex;
+}
+
+list-bar>div {
+    flex: 1 1 305px;
+}
+
+list-bar>div:nth-child(2),
+list-bar>div:nth-child(1) {
+    margin-left: 75px;
+}
+
+list-bar>div:nth-child(1) {
+    order: 2;
+}
+
+list-bar>div:nth-child(2) {
+    order: 3;
+}
+
+list-bar>div:nth-child(3) {
+    order: 1;
+}
+
+list-bar div>* {
+    text-align: center;
+}
+
+.text {
+    font-size: 17px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.data {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 7px 100px;
+    border-radius: 30px;
+    margin: 0 30px;
+    box-shadow: 6px 6px 16px rgba(18, 18, 18, .25);
+}
+
+.light>.data {
+    color: #292929;
+}
+
+.dark>.data {
+    color: #2B0D0D;
+}
+
+.light>.text.kasus {
+    color: #EE575E;
+}
+
+.light>.text.sembuh {
+    color: #627DBC;
+}
+
+.light>.text.meninggal {
+    color: #7A7A7A;
+}
+
+.dark>.text.kasus {
+    color: #F77D82;
+}
+
+.dark>.text.sembuh {
+    color: #627BB7;
+}
+
+.dark>.text.meninggal {
+    color: #B6B5B5;
+}
+
+.data.kasus {
+    background-color: #EE575E;
+}
+
+.data.sembuh {
+    background-color: #627DBC;
+}
+
+.data.meninggal {
+    background-color: #7A7A7A;
+}

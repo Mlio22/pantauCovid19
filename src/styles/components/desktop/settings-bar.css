@@ -1,0 +1,277 @@
+settings-bar {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility .25s, opacity .5s;
+}
+
+settings-bar.light {
+    background-color: rgba(122, 122, 122, .5);
+}
+
+settings-bar.dark {
+    background-color: rgba(240, 240, 240, .5);
+}
+
+settings-bar.showed {
+    visibility: visible;
+    opacity: 1;
+}
+
+settings-bar .menu {
+    position: absolute;
+    overflow: auto;
+    right: -100%;
+    height: 100%;
+    width: 275px;
+    transition: .5s all;
+    border-radius: 30px 0 0 30px;
+}
+
+.menu.light {
+    background-color: #EFEEEE;
+}
+
+.menu.dark {
+    background-color: #4C4B4B;
+}
+
+.menu.showed {
+    right: 0;
+}
+
+.settingsHeader {
+    padding-top: 20px;
+    width: max-content;
+    margin: auto;
+    height: 50px;
+}
+
+.settingsHeader>* {
+    float: right;
+}
+
+.settingsHeader p {
+    font-size: 22px;
+    margin-right: 30px;
+    color: #121212;
+    margin-top: 5px;
+    margin-left: 30px;
+}
+
+.settingsHeader i {
+    font-size: 20px;
+    padding: 10px;
+    color: #707070;
+    cursor: pointer;
+}
+
+.menu>div:not(.settingsHeader)>div:not(.exception) {
+    width: 50%;
+    float: left;
+}
+
+.menu.light p {
+    color: #121212;
+}
+
+.menu.dark p {
+    color: #efeeee;
+}
+
+.menu p.left {
+    margin-left: 20px;
+}
+
+.menu p.right {
+    width: 50px;
+    margin: auto;
+    transition: .25s all;
+}
+
+.menu p.left,
+.menu p.right {
+    font-size: 17px;
+    margin-top: 17px;
+    margin-bottom: 17px;
+    width: max-content;
+}
+
+.menu.light p.success {
+    color: #1E4398;
+}
+
+.menu.light p.failed {
+    color: #A00009;
+}
+
+.menu.light p.loading {
+    color: #121212;
+}
+
+.menu.dark p.success {
+    color: #ACC4FE;
+}
+
+.menu.dark p.failed {
+    color: #FF696F;
+}
+
+.menu.dark p.loading {
+    color: #EFEEEE;
+}
+
+.toggleLang {
+    width: 120px;
+    margin: auto;
+}
+
+.toggleLang>* {
+    float: left;
+    margin: 0 5px;
+}
+
+.toggleLang .switch {
+    margin-top: 3px;
+    display: block;
+    height: 20px;
+    position: relative;
+    width: 45px;
+}
+
+.toggleLang .switch input {
+    display: none;
+}
+
+.toggleLang .slider {
+    border: #707070 solid 1px;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.menu.light .toggleLang .slider {
+    background-color: #fff;
+}
+
+.menu.dark .toggleLang .slider {
+    background-color: #292929;
+}
+
+.toggleLang .slider:before {
+    bottom: 1.5px;
+    content: "";
+    height: 15px;
+    left: 2px;
+    position: absolute;
+    transition: .4s;
+    width: 15px;
+}
+
+.menu.light .toggleLang .slider:before {
+    background-color: #707070;
+}
+
+.menu.dark .toggleLang .slider:before {
+    background-color: #f0f0f0;
+}
+
+.toggleLang input#langToggle:checked+.slider:before {
+    transform: translateX(23px);
+}
+
+.toggleLang .slider.round {
+    border-radius: 34px;
+}
+
+.toggleLang.light .slider.round {
+    box-shadow: 6px 6px 16px rgba(122, 122, 122, .25);
+}
+
+.toggleLang.dark .slider.round {
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, .16);
+}
+
+.toggleLang .slider.round:before {
+    border-radius: 50%;
+}
+
+.left.excepction {
+    display: none;
+}
+
+.refreshContainer {
+    float: left;
+    width: 100%;
+}
+
+.refresh {
+    padding: 10px 30px;
+    width: max-content;
+    margin: auto;
+    border: #707070 1px solid;
+    border-radius: 30px;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: .3s all;
+}
+
+.menu.light .refresh {
+    background: rgba(122, 122, 122, .1);
+    box-shadow: 6px 6px 16px rgba(153, 132, 132, 0.16);
+}
+
+.menu.dark .refresh {
+    background-color: #696969;
+    box-shadow: 6px 6px 16px rgba(18, 18, 18, .5);
+}
+
+.refresh:hover {
+    background: rgba(122, 122, 122, .3);
+}
+
+.refresh p {
+    font-size: 16px;
+}
+
+.repoContainer {
+    float: left;
+    width: 100%;
+}
+
+.repo {
+    width: max-content;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.repo>* {
+    float: left;
+    padding: 10px 0;
+    text-decoration: none;
+}
+
+.repo i {
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.repo p {
+    font-size: 16px;
+}
+
+.menu.light i {
+    color: #000;
+}
+
+.menu.dark i {
+    color: #efeeee;
+}

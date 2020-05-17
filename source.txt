@@ -10,8 +10,8 @@
 
 +   integrasikan semua data custom element
 
-*   buat layout untuk desktop dan implementasikan
-*   tes untuk desktop
++   buat layout untuk desktop dan implementasikan
++   tes untuk desktop
 
 +   tambah fitur deteksi koneksi 
 +   tambah fitur translasi ke bahasa inggris
