@@ -1,9 +1,10 @@
+import "../components/settings-bar.js";
+import "../components/search-bar.js";
+import "../components/modal-popup.js";
+import "../components/list-bar.js";
 import "../components/chart-bar.js";
 import "../components/header-bar.js";
-import "../components/search-bar.js";
-import "../components/list-bar.js";
-import "../components/modal-popup.js";
-import "../components/settings-bar.js";
+
 
 const connTimeout = 1000;
 

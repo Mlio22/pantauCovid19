@@ -41,7 +41,6 @@ class SettingsBar extends HTMLElement {
     }
 
     set status(statusObject) {
-        console.log("here");
 
         if ("onlineStatus" in statusObject) {
             const onlineStatus = this.querySelector(".onlineStatus");
