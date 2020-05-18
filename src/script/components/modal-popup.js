@@ -2,6 +2,7 @@ import countries from "../data/global-countries.js";
 import indonesiaProvinces from "../data/indonesia-provinces.js";
 import "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js";
 import "https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js";
+
 class ModalPopup extends HTMLElement {
     constructor() {
         super();

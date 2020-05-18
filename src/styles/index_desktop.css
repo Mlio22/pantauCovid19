@@ -4,24 +4,6 @@
 @import "../styles/components/desktop/list-bar.css";
 @import "../styles/components/desktop/modal.css";
 @import "../styles/components/desktop/settings-bar.css";
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    transition: .4s all;
-}
-
-body.light {
-    background-color: #efeeee;
-}
-
-body.dark {
-    background-color: #292929;
-}
-
 .container {
     transition: .4s all;
     width: 100vw;

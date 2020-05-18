@@ -1,3 +1,10 @@
+import "../components/chart-bar.js";
+import "../components/header-bar.js";
+import "../components/search-bar.js";
+import "../components/list-bar.js";
+import "../components/modal-popup.js";
+import "../components/settings-bar.js";
+
 const connTimeout = 1000;
 
 const pingUrl = "https://res.cloudinary.com/dv2l54jwg/raw/upload/v1588321529/hi_fb6klp.js";
