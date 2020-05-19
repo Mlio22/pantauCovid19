@@ -1,11 +1,15 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-    entry: "./src/script/app.js",
+    entry: {
+        support: "./src/script/support.js",
+        main: "./src/script/view/main.js"
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js"
+        filename: "[name].bundle.js"
     },
     module: {
         rules: [{
@@ -23,6 +27,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./index.html",
             filename: "index.html"
+        }),
+        new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: "defer"
         })
     ]
 }

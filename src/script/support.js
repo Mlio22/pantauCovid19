@@ -1,2 +1,2 @@
 import "../styles/components/all/styles.css";
-import "./view/main.js";
+import "./components/modal-popup.js";
