@@ -1,5 +1,3 @@
-import "../../../node_modules/chart.js/dist/Chart.min.js";
-
 const baseUrlInt = "https://api.covid19api.com/summary";
 const baseUrlDom = "https://cors-anywhere.herokuapp.com/https://api.kawalcorona.com/indonesia/provinsi/";
 const fetchTimeout = 100000;
