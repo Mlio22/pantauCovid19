@@ -17,7 +17,10 @@ module.exports = {
             use: ["style-loader", "css-loader"]
         }, {
             test: /\.(woff|woff2|eot|ttf|otf)$/,
-            use: ["file-loader"]
+            loader: "file-loader",
+            options: {
+                outputPath: "fonts/"
+            }
         }, {
             test: /\.svg$/,
             loader: "svg-inline-loader"
