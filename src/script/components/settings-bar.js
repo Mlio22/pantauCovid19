@@ -146,7 +146,7 @@ class SettingsBar extends HTMLElement {
 
         const repoDiv = document.createElement("div");
         repoDiv.className = "repoContainer";
-        repoDiv.innerHTML = `<div class="repo exception"><i class="fab fa-github"></i><a href="https://google.com"><p>Github Repo</p></a></div>`
+        repoDiv.innerHTML = `<div class="repo exception"><i class="fab fa-github"></i><a href="https://github.com/Mlio22/pantauCovid19"><p>Github Repo</p></a></div>`
 
         this.menu.appendChild(languageDiv);
         this.menu.appendChild(statusDiv);
