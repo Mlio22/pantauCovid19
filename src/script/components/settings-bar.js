@@ -17,15 +17,11 @@ class SettingsBar extends HTMLElement {
     }
 
     set show(bool) {
-        console.log('aowkawok');
-
         this._isShowed = bool ? "showed" : "";
     }
 
     connectedCallback() {
         this.render();
-
-
         const rightArrow = this.querySelector("i.fa-arrow-right");
 
         this.addEventListener("click", e => {
@@ -45,7 +41,6 @@ class SettingsBar extends HTMLElement {
         if ("onlineStatus" in statusObject) {
             const onlineStatus = this.querySelector(".onlineStatus");
             onlineStatus.classList.remove(this._onlineStyle);
-
 
             this._isOnline = statusObject.onlineStatus ? "Online" : "Offline";
             this._onlineStyle = statusObject.onlineStatus ? "success" : "failed";
@@ -92,7 +87,6 @@ class SettingsBar extends HTMLElement {
                     this._localStyle = "loading";
                     break;
             };
-
             localStatus.classList.add(this._localStyle);
         }
     }
@@ -112,10 +106,7 @@ class SettingsBar extends HTMLElement {
         this.menu.className = `menu ${this._theme} ${this._isShowed}`;
 
         this.menu.innerHTML = `<div class="settingsHeader"><i class="fas fa-arrow-right"></i><p>Pengaturan</p></div>`
-
-
         const statusDiv = document.createElement("div");
-        console.log(this._isOnline);
 
         statusDiv.innerHTML = `<div><p class="left">Status</p></div><div><p class="right onlineStatus ${this._onlineStyle} ${this._theme}">${this._isOnline}</p></div>`
 

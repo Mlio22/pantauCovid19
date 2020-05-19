@@ -27,16 +27,12 @@ class ListBar extends HTMLElement {
             this._case = this.formatNumber(chartData.case);
             this._death = this.formatNumber(chartData.death);
             this._recovered = this.formatNumber(chartData.recovered);
-            console.log("mya");
 
         } else {
-            console.log('myk');
-
             this._case = this.formatNumber(chartData.positifLokal);
             this._death = this.formatNumber(chartData.meninggalLokal);
             this._recovered = this.formatNumber(chartData.sembuhLokal);
         }
-        console.log(chartData);
 
         if (this._case == -1) {
             this._case = "NULL";
@@ -49,14 +45,11 @@ class ListBar extends HTMLElement {
 
     set theme(color) {
         this._theme = color;
-        console.log(color);
-
         const divs = this.querySelectorAll("div");
         divs.forEach(div => {
             div.className = this._theme;
         });
         this.render();
-
     }
 
     set lang(lang) {

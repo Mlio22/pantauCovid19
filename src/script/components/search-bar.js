@@ -30,7 +30,6 @@ class SearchBar extends HTMLElement {
         this.querySelector(".searchElement").className = `searchElement ${this._theme}`;
     }
 
-
     set ready(status) {
         this._status = status;
         this.renderLocation();
@@ -40,7 +39,6 @@ class SearchBar extends HTMLElement {
         this._isIntAvailable = availablity.isIntAvailable;
         this._isDomAvailable = availablity.isDomAvailable;
         this._anyDataAvailable = this._isDomAvailable || this._isIntAvailable;
-        console.log(this._isIntAvailable, this._isDomAvailable);
         this.renderLocation();
     }
 
@@ -98,23 +96,6 @@ class SearchBar extends HTMLElement {
                 this.message = `Loading Data ${this.message}...`;
             }
 
-
-
-            // p.addEventListener("mouseover", () => {
-            //     if (typeof(to) != undefined) {
-            //         clearTimeout(to);
-            //     }
-            //     var to = setTimeout(() => {
-            //         p.innerText = "Silahkan tekan untuk mencari...";
-
-            //     }, 100);
-
-            //     // if (this.childNodes.length < 2) {
-
-            //     // }
-
-            // });
-
             p.addEventListener("mouseout", () => {
 
                 if (typeof(to) != undefined) {
@@ -123,17 +104,9 @@ class SearchBar extends HTMLElement {
                 var to = setTimeout(() => {
                     p.innerText = this.message;
                 }, 100);
-                // if (this.childNodes.length < 2) {
-
-                // }
             });
 
             p.addEventListener("click", () => {
-                // console.log({
-                //     "header-bar": window.getComputedStyle(document.querySelector("header-bar")).height,
-                //     "chart-bar": window.getComputedStyle(document.querySelector("canvas")).height,
-                //     "search-bar": window.getComputedStyle(this).height
-                // });
                 if (this._status) {
                     const modalPopupelement = document.createElement("modal-popup");
                     modalPopupelement.selectedCountry = {
@@ -153,10 +126,7 @@ class SearchBar extends HTMLElement {
         } else {
             this.message = "Data Tidak Ada!";
         }
-
         p.innerHTML = this.message;
-
-
     }
 }
 

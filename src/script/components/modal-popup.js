@@ -43,7 +43,6 @@ class ModalPopup extends HTMLElement {
         this._selectedProvince = selectedObject.province;
         this._selectedCountrySlug = selectedObject.slug;
 
-        console.log(selectedObject);
         this.render();
         this.toggle();
     }
@@ -68,13 +67,10 @@ class ModalPopup extends HTMLElement {
 
             if (this._intStatus) {
                 if (!this._domStatus) {
-                    console.log('dom status tidak ada jadi dihapus');
                     this.countryAddition = this.countryAddition.replace('<option value="indonesia">Indonesia</option>', '');
                 } else {
                     const indonesiaProvinces = this.indonesiaProvinceAddition;
                 }
-                console.log(this.countryAddition);
-
                 this._innerHTML += this.countryAddition;
 
             } else if (this._domStatus) {
@@ -107,7 +103,6 @@ class ModalPopup extends HTMLElement {
             this.toggle();
             setTimeout(() => {
                 document.body.style.overflow = "auto";
-
                 this.remove();
             }, 250);
         });
@@ -126,8 +121,6 @@ class ModalPopup extends HTMLElement {
             $("#select-country").val(this._selectedCountrySlug);
             $("#select-country").trigger("change");
 
-            console.log("berubah", this._selectedCountrySlug);
-
             if (this._domStatus && this._selectedCountry == "Indonesia") {
                 $("#select-province").select2({
                     "width": "75%",
@@ -144,8 +137,6 @@ class ModalPopup extends HTMLElement {
             }
 
             $("#select-country").on("select2:select", (e) => {
-                console.log(e);
-
                 const dataCountry = e.params.data;
 
                 this._selectedCountry = dataCountry.text;
@@ -173,7 +164,6 @@ class ModalPopup extends HTMLElement {
                     $("#select-province").on("select2:select", (e) => {
                         const dataProvince = e.params.data;
                         this._selectedProvince = dataProvince.text;
-                        console.log(this._selectedCountry, this._selectedProvince, this._selectedCountrySlug);
                     });
 
                 } else {
@@ -203,7 +193,6 @@ class ModalPopup extends HTMLElement {
 
                 setTimeout(() => {
                     document.body.style.overflow = "auto";
-
                     this.remove();
                 }, 250);
             });

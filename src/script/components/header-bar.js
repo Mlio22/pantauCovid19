@@ -9,7 +9,6 @@ class HeaderBar extends HTMLElement {
         this._isSettingsOn = false;
         this._lang = true;
         this.render();
-
     }
 
     toggleSettings() {
@@ -22,7 +21,6 @@ class HeaderBar extends HTMLElement {
         this._isSettingsOn = !this._isSettingsOn;
         document.querySelector("settings-bar").show = this._isSettingsOn;
 
-
         if (this._isSettingsOn) {
             document.body.style.overflowY = "hidden";
             document.body.style.touchAction = "none";
@@ -34,8 +32,6 @@ class HeaderBar extends HTMLElement {
     }
 
     set lang(lang) {
-        console.log(lang);
-
         this.querySelector(".headerTextContainer .first").innerHTML = this._lang ? "Track" : "Pantau";
         this._lang = lang;
     }

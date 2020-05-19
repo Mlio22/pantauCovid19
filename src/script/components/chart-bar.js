@@ -45,8 +45,6 @@ class ChartBar extends HTMLElement {
     }
 
     set urlLocation(locationObject) {
-        // console.log(locationObject);
-
         this._country = locationObject.country;
         this._province = locationObject.province;
         this._slug = locationObject.slug;
@@ -61,7 +59,6 @@ class ChartBar extends HTMLElement {
 
     searchData() {
         document.querySelector("search-bar").ready = false;
-        // console.log(this._country, this._province);
 
         if (this._domStatus || this._intStatus) {
             if (this._country == "Indonesia" && this._domStatus) {
@@ -98,31 +95,22 @@ class ChartBar extends HTMLElement {
                 this._recovered = -1;
 
                 if (this._intTimeout) {
-                    // console.log("Data International RTO");
                     return 0;
                 }
 
                 if (this._country == "Global") {
                     let data = this._intData.Global;
-                    // console.log(data.TotalConfirmed);
 
                     this._case = data.TotalConfirmed;
-
                     this._death = data.TotalDeaths;
-
                     this._recovered = data.TotalRecovered;
                 }
 
                 this._intData.Countries.forEach(data => {
 
                     if (data.Country == this._country) {
-                        // console.log(data);
-                        // console.log(data.TotalConfirmed);
-
                         this._case = data.TotalConfirmed;
-
                         this._death = data.TotalDeaths;
-
                         this._recovered = data.TotalRecovered;
                     }
                 });
@@ -135,7 +123,6 @@ class ChartBar extends HTMLElement {
                 }
 
                 if (this._case == 0 && this._death == 0 && this._recovered == 0) {
-                    console.log("all zero");
                     this._case = -1;
                     this._death = -1;
                     this._recovered = -1;
@@ -150,8 +137,7 @@ class ChartBar extends HTMLElement {
             this.updateChart();
             document.querySelector("search-bar").ready = true;
         } else {
-            // error total
-            // console.log("total error");
+            //! error total
         }
     }
 
@@ -163,8 +149,6 @@ class ChartBar extends HTMLElement {
             const to1 = setTimeout(() => {
                 this._intTimeout = true;
                 this._intStatus = this._intStatus || false;
-
-
                 resolve("");
 
             }, fetchTimeout);
@@ -182,8 +166,6 @@ class ChartBar extends HTMLElement {
                 .then(responseJson => {
                     clearTimeout(to1);
                     this._intStatus = true;
-                    // console.log('success global');
-                    console.log(responseJson);
                     this._intData = responseJson;
                 })
                 .then(_ => resolve(""))
@@ -206,7 +188,6 @@ class ChartBar extends HTMLElement {
         return new Promise(resolve => {
             const to2 = setTimeout(() => {
                 this._domTimeout = true;
-                // console.log('timeout local');
 
                 this._domStatus = this._domStatus || false;
                 resolve("");
@@ -225,7 +206,6 @@ class ChartBar extends HTMLElement {
                 })
                 .then(responseJson => {
                     clearTimeout(to2);
-                    console.log(responseJson);
 
                     this._domStatus = true;
                     this._domData = responseJson;
@@ -236,11 +216,8 @@ class ChartBar extends HTMLElement {
                     clearTimeout(to2);
                     resolve("");
                 })
-
         });
-
     }
-
     refreshData() {
         console.log("data refreshed");
 

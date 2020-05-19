@@ -63,11 +63,3 @@ document.querySelector(".headerTextContainer").addEventListener("click", functio
         elem.msRequestFullscreen();
     }
 })
-
-// debug tools
-
-// window.addEventListener("resize", _ => {
-//     console.log("size changed");
-
-
-// });
