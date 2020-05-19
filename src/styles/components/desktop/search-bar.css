@@ -16,6 +16,7 @@ search-bar {
 }
 
 search-bar>.searchElement {
+    cursor: pointer;
     font-size: 12px;
     font-weight: bold;
     width: max-content;
