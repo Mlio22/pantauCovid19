@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap";
 @import "../../../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
-@import "https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css";
+@import "../../../../node_modules/select2/dist/css/select2.min.css";
 @import "../../index_portrait.css" all and (orientation: portrait);
 @import "../../index_landscape.css" all and (orientation: landscape) and (max-height: 700px);
 @import "../../index_desktop.css" all and (orientation: landscape) and (min-height: 700px);
