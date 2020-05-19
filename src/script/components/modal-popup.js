@@ -1,6 +1,6 @@
 import countries from "../data/global-countries.js";
 import indonesiaProvinces from "../data/indonesia-provinces.js";
-import "../../../node_modules/jquery/dist/jquery.min.js";
+import $ from "jquery";
 import "../../../node_modules/select2/dist/js/select2.min.js";
 
 class ModalPopup extends HTMLElement {
